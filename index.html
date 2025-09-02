@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Standard favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -12,80 +12,202 @@
   <meta name="msapplication-TileColor" content="#324c5f">
   <meta name="theme-color" content="#678b3d">
 
-  <title>Close to Home Adult Family Home</title>
+  <title>Close to Home Adult Family Home — Coming Soon</title>
 
-  <!-- Meta description for SEO -->
+  <!-- SEO -->
   <meta name="description" content="Close to Home Adult Family Home in Bothell, WA — compassionate care, personalized support, and a safe home environment for your loved ones.">
+  <meta property="og:title" content="Close to Home Adult Family Home — Coming Soon">
+  <meta property="og:description" content="Compassionate, personalized care in a safe, home-like environment. Serving Bothell, WA.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/favicon.png">
+  <meta property="og:url" content="https://closetohomeafh.com">
 
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Minimal, embedded styles for a standalone page -->
+  <style>
+    :root {
+      --ink: #324c5f;   /* brand blue */
+      --leaf: #678b3d;  /* brand green */
+      --bg: #f7faf9;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: linear-gradient(180deg, #f2f6f4, #eef5f1 40%, #ffffff 100%);
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: saturate(120%) blur(6px);
+      border-bottom: 1px solid #e8efe9;
+    }
+    .nav { display: flex; align-items: center; justify-content: center; padding: .75rem 1rem; }
+    .logo img { height: 44px; width: auto; display: block; }
+
+    /* Hero */
+    .hero {
+      display: grid; place-items: center; text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+    .hero h1 { margin: .5rem 0 0; font-size: clamp(1.6rem, 2.6vw + 1rem, 3rem); }
+    .tagline { margin: .25rem 0 1.25rem; font-size: clamp(1rem, .5vw + .9rem, 1.25rem); font-style: italic; }
+    .badge {
+      display: inline-block;
+      padding: .4rem .75rem; border-radius: 999px;
+      background: color-mix(in oklab, var(--leaf) 18%, white);
+      border: 1px solid color-mix(in oklab, var(--leaf) 30%, #cfe0d0);
+      font-weight: 600; letter-spacing: .4px;
+    }
+
+    .coming {
+      margin: 1.25rem auto 0;
+      font-size: clamp(1.2rem, 1vw + 1rem, 1.6rem);
+      font-weight: 700;
+      color: var(--leaf);
+    }
+
+    /* Card */
+    .card {
+      width: min(920px, 92vw);
+      margin: 1.5rem auto 2.5rem;
+      background: var(--card);
+      border: 1px solid #e4ece5;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(50,76,95,.08);
+      overflow: hidden;
+    }
+    .card-inner { padding: 1.5rem; }
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 820px) {
+      .grid { grid-template-columns: 1.1fr .9fr; gap: 1.25rem; }
+    }
+
+    h2 { margin: 0 0 .5rem; font-size: clamp(1.15rem, .7vw + 1rem, 1.5rem); }
+    p { line-height: 1.6; }
+
+    /* Notify form */
+    .notify {
+      background: #f7fbf8; border: 1px dashed #cfe0d0; border-radius: 12px; padding: 1rem;
+    }
+    .notify form { display: grid; grid-template-columns: 1fr auto; gap: .6rem; }
+    .notify input[type="email"] {
+      padding: .75rem .9rem; border: 1px solid #cfdad6; border-radius: 10px; font-size: 1rem; width: 100%;
+    }
+    .notify button {
+      padding: .78rem 1.1rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;
+      background: var(--ink); color: white;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .notify button:hover { background: #2a3f50; }
+    .notify button:active { transform: translateY(1px); }
+    .status { margin-top: .5rem; font-weight: 600; min-height: 1.2em; }
+
+    /* "About" and "Why choose us" sections from provided content */
+    .section { padding: 1.25rem; border-top: 1px solid #eef3ef; }
+    .pill-list { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .5rem; }
+    .pill-list li { background: #f4f8f5; border: 1px solid #e0ebe2; border-radius: 999px; padding: .55rem .85rem; }
+
+    /* Footer */
+    footer { text-align: center; color: #5a6c75; padding: 2rem 1rem; font-size: .95rem; }
+    .contact a { color: var(--ink); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    /* Tiny animation */
+    @keyframes float { from { transform: translateY(0) } 50% { transform: translateY(-4px) } to { transform: translateY(0) } }
+    .logo img { animation: float 4s ease-in-out infinite; }
+  </style>
 </head>
 <body>
   <header>
-    <nav class="nav">
-      <div class="nav-center">
-        <div class="logo">
-          <img src="images/favicon.png" alt="Close to Home Logo" style="height: 40px;" />
-        </div>
-      </div>
-      <div class="nav-right"></div>
+    <nav class="nav" aria-label="Primary">
+      <div class="logo"><img src="images/favicon.png" alt="Close to Home AFH logo"></div>
     </nav>
-
-    <!-- Navigation Tabs + Hamburger --
-
-    <div class="header-text">
-      <h1 style="margin-bottom: 0.5rem;">Close to Home Adult Family Home</h1>
-      <h4 style="font-size: 1.2rem; font-style: italic; margin-top: 0;">
-        <i>Your Journey. Our Care. Close to Home.</i>
-      </h4>
-    </div>
   </header>
 
-  <div class="tab-wrapper">
-    <div class="tab-container" style="border: 0.05px solid white; margin: 20px; padding: 20px;">
+  <main>
+    <section class="hero" role="banner">
+      <span class="badge" aria-label="Site status">Website Update In Progress</span>
+      <h1>Close to Home Adult Family Home</h1>
+      <p class="tagline"><em>Your Journey. Our Care. Close to Home.</em></p>
+      <p class="coming" aria-live="polite">We’re preparing something caring & beautiful — coming soon.</p>
+    </section>
 
-      <!-- About -->
-      <div id="about" class="tab-content active">
-        <h2>About Us</h2>
-        <p>
-          At <strong>Close to Home Adult Family Home</strong>, we are committed to delivering personalized care with warmth and compassion. 
-          Our team takes pride in understanding each resident’s unique story and supporting their individual needs.
-        </p>
-        <p>
-          We provide a safe, nurturing environment that feels like home — whether it's helping with daily routines, sharing meaningful conversations, 
-          or offering companionship that uplifts spirits.
-        </p>
-        <p>
-          Our mission is to ensure every resident feels <em>valued, empowered, and genuinely cared for</em>, every step of the way.
-        </p>
+    <section class="card" aria-labelledby="stay-in-touch">
+      <div class="card-inner grid">
+        <div>
+          <h2 id="stay-in-touch">Stay in touch</h2>
+          <p>Want to know when the full site launches or need information now? Leave your email and we’ll reach out with updates. You can also call or email us anytime.</p>
+
+          <div class="notify" role="region" aria-label="Notify form">
+            <form id="notify-form" action="https://formspree.io/f/mblybwgz" method="POST">
+              <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+              <button type="submit" aria-label="Notify me">Notify Me</button>
+              <input type="hidden" name="form_type" value="coming-soon-notify">
+            </form>
+            <div id="notify-status" class="status" aria-live="polite"></div>
+          </div>
+
+          <div class="section contact">
+            <p><strong>Phone:</strong> <a href="tel:+14252988051">(425) 298-8051</a></p>
+            <p><strong>Email:</strong> <a href="mailto:closetohomeafh@gmail.com">closetohomeafh@gmail.com</a></p>
+            <p><strong>Address:</strong> 111 195th Pl SW, Bothell, WA 98012</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section" aria-labelledby="about">
+            <h2 id="about">About Us</h2>
+            <p>At <strong>Close to Home Adult Family Home</strong>, we are committed to delivering personalized care with warmth and compassion. Our team takes pride in understanding each resident’s unique story and supporting their individual needs.</p>
+            <p>We provide a safe, nurturing environment that feels like home — whether it's helping with daily routines, sharing meaningful conversations, or offering companionship that uplifts spirits.</p>
+            <p>Our mission is to ensure every resident feels <em>valued, empowered, and genuinely cared for</em>, every step of the way.</p>
+          </div>
+
+          <div class="section" aria-labelledby="why">
+            <h2 id="why">Why Choose Us</h2>
+            <ul class="pill-list">
+              <li><strong>🌼 Personalized Care:</strong> We get to know each resident personally, tailoring support to their unique needs.</li>
+              <li><strong>🏡 Home-Like Environment:</strong> A safe, warm, and loving home that promotes dignity and comfort.</li>
+              <li><strong>🧑‍⚕️ Experienced Staff:</strong> Compassionate professionals dedicated to respectful and responsive care.</li>
+              <li><strong>🕋 Peace of Mind:</strong> Open communication with families and dependable service every day.</li>
+            </ul>
+          </div>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Why Choose Us -->
-      <section class="why-choose-us" style="padding: 2rem; background-color: #f9f9f9; color: #324c5f; border-radius: 12px; max-width: 1000px; margin: 2rem auto;">
-        <h2 style="text-align: center; margin-bottom: 1rem;">Why Choose Us</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 1rem;"><strong>🌼 Personalized Care:</strong> We get to know each resident personally, tailoring support to their unique needs.</li>
-          <li style="margin-bottom: 1rem;"><strong>🏡 Home-Like Environment:</strong> A safe, warm, and loving home that promotes dignity and comfort.</li>
-          <li style="margin-bottom: 1rem;"><strong>🧑‍⚕️ Experienced Staff:</strong> Compassionate professionals dedicated to respectful and responsive care.</li>
-          <li style="margin-bottom: 1rem;"><strong>🕊 Peace of Mind:</strong> Open communication with families and dependable service every day.</li>
-        </ul>
-      </section>
-
-
-
-
-
- 
-
-    </div>
-  </div>
-
-  <hr style="border: none; border-top: 0.25px solid #f9f9f9; margin: 2rem auto; width: 60%;">
   <footer>
     <p>© 2025 Close to Home Adult Family Home | All rights reserved</p>
   </footer>
 
-  <!-- Link to external JavaScript -->
-  <script src="scripts.js"></script>
+  <script>
+    // Lightweight async Formspree submission with status text
+    const form = document.getElementById('notify-form');
+    const status = document.getElementById('notify-status');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Sending...';
+        try {
+          const data = new FormData(form);
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          if (res.ok) {
+            status.textContent = 'Thank you! We\'ll keep you updated.';
+            form.reset();
+          } else {
+            status.textContent = 'Hmm, something went wrong. Please try again or email us directly.';
+          }
+        } catch (err) {
+          status.textContent = 'Network error. Please try again later.';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
