@@ -1,0 +1,160 @@
+:root {
+  --primary-color: #4e6f2d;
+  --primary-color-light: #557a19;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --bg-dark: #242424;
+  --bg-light: #ffffff;
+  --link-color: #646cff;
+  --link-hover: #535bf2;
+  --font-family: 'Quicksand', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.5;
+  font-weight: 400;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  font-weight: 500;
+  color: var(--link-color);
+  text-decoration: inherit;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+button:hover {
+  border-color: var(--link-color);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Dark / Light theme support */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-dark: var(--bg-light);
+    --text-color: #213547;
+    --link-hover: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* === Floating Contact Button === */
+#contact-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: var(--font-family);
+}
+
+#contact-toggle {
+  background-color: var(--primary-color);
+  color: #f9f9f9;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 1.2rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#contact-toggle:hover {
+  background-color: var(--primary-color-light);
+  transform: scale(1.05);
+}
+
+/* Menu container */
+#contact-menu {
+  display: none; /* hidden by default */
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 4px double var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  padding: 10px;
+  min-width: 180px;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+/* Show menu when React sets className="show" */
+#contact-menu.show {
+  display: flex;
+}
+
+/* Menu items */
+#contact-menu a,
+#contact-menu button {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--primary-color);
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+}
+
+#contact-menu a:last-child,
+#contact-menu button:last-child {
+  border-bottom: none;
+}
+
+#contact-menu a:hover,
+#contact-menu button:hover {
+  background-color: #e6f0d6;
+}
+
+/* Optional: Smooth scroll for tabs */
+html {
+  scroll-behavior: smooth;
+}

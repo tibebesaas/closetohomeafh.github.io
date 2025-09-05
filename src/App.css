@@ -1,0 +1,355 @@
+/* === Global === */
+:root {
+  --primary-color: #9CAF88;
+  --primary-color-light: #9CAF88;
+  --bg-dark: #242424;
+  --bg-light: #2C2C2C;
+  --text-color: #2C2C2C;
+  --link-color: #2C2C2C;
+  --link-hover: black;
+  --font-family: 'Quicksand', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+/* === Textarea Fix === */
+textarea {
+  resize: none;        /* prevent manual resize */
+  width: 100%;         /* fill available space */
+  height: 120px;       /* fixed height */
+  box-sizing: border-box;
+}
+
+/* === Header === */
+header {
+  background: url("/images/closetohome-header.jpg") center/cover no-repeat;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.header-text {
+  background: rgba(0,0,0,0.3);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+
+.header-text h1 {
+  font-size: 2.2rem;
+  color: #9CAF88;
+}
+
+.header-text h4 {
+  color: #9CAF88;
+  font-style: italic;
+}
+
+/* === Tabs === */
+.tab-wrapper {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  background: #2C2C2C;
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  margin: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.tab.active,
+.tab:hover {
+  background-color: var(--primary-color);
+  color: #2C2C2C;
+  transform: scale(1.05);
+}
+
+/* === Tab content === */
+.tab-content {
+  display: none;
+  background-color: var(--primary-color);
+  color: #2C2C2C;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tab-content ul li {
+  margin-bottom: 0.75rem;
+}
+
+/* === Slideshow === */
+.slideshow-container {
+  max-width: 1000px;
+  margin: 1rem auto;
+  border: 4px double var(--primary-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* === Contact float === */
+#contact-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#contact-toggle {
+  background-color: var(--primary-color);
+  color: #2C2C2C;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#contact-toggle:hover {
+  background-color: var(--primary-color-light);
+  transform: scale(1.05);
+}
+
+#contact-menu {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: #2C2C2C;
+  border-radius: 12px;
+  border: 4px double var(--primary-color);
+  padding: 10px;
+  min-width: 180px;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+#contact-menu.show {
+  display: flex;
+}
+
+#contact-menu a,
+#contact-menu button {
+  display: block;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: left;
+}
+
+#contact-menu a:last-child,
+#contact-menu button:last-child {
+  margin-bottom: 0;
+}
+
+#contact-menu a:hover,
+#contact-menu button:hover {
+  background-color: #e6f0d6;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #2C2C2C;
+}
+/* Contact Form Styling */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* spacing between fields */
+  max-width: 500px;
+  margin: 0 auto; /* center the form */
+}
+
+#contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #2C2C2C;
+}
+
+#contact-form input,
+#contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+#contact-form button {
+  background-color: #2C2C2C;
+  color: #9CAF88;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #9CAF88;
+}
+/* Slideshow base */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  height: 400px; /* adjust to your images */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin: 1rem auto;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes sure image covers nicely */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+/* Contact Form Styling */
+#contact-form, .contact-form {
+  max-width: 500px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 2px solid #9CAF88;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#contact-form h2, .contact-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2C2C2C;
+}
+
+#contact-form label, .contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2C2C2C;
+}
+
+#contact-form input,
+#contact-form textarea,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+#contact-form button,
+.contact-form button {
+  background-color: #9CAF88;
+  color: #2C2C2C;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+#contact-form button:hover,
+.contact-form button:hover {
+  background-color: #8AAE76;
+}
+
+#contact-form p.status,
+.contact-form p.status {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.status-message {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.status-message.fade-out {
+  opacity: 0;
+}
