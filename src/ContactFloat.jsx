@@ -39,8 +39,8 @@ export default function ContactFloat() {
           ref={menuRef}
           style={{ display: "block" }}
         >
-          <a href="tel:+14252384326">📞 Call Us</a>
-          <a href="mailto:bloominglifeafh@gmail.com">✉️ Email Us</a>
+          <a href="tel:+12532059208">📞 Call Us</a>
+          <a href="mailto:closetohomeafh@outlook.com">✉️ Email Us</a>
           <a href="#contact">📝 Contact Form</a>
         </div>
       )}

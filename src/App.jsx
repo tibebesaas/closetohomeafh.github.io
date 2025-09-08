@@ -46,31 +46,58 @@ function App() {
       }}
     >
       <div className="contact-info">
-        <p style={{ display: "flex", alignItems: "center" }}>
-          <strong style={{ flexShrink: 0, marginRight: "0.5rem" }}>Phone:</strong>
-          <span className="ellipsis" style={{ maxWidth: "300px", display: "inline-block" }}>
-            <a href="tel:+12532059208">(253) 205-9208</a>
-          </span>
-        </p>
+       <p style={{ display: "flex", alignItems: "center", gap: "0.5rem", margin: "0.5rem 0" }}>
+  <i className="fas fa-phone" style={{ color: "#4e6f2d", minWidth: "18px" }}></i>
+  <strong style={{ flexShrink: 0 }}>Phone:</strong>
+  <span
+    className="ellipsis"
+    style={{
+      maxWidth: "300px",
+      display: "inline-block",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    }}
+  >
+    <a href="tel:+12532059208">(253) 205-9208</a>
+  </span>
+</p>
 
-        <p style={{ display: "flex", alignItems: "center" }}>
-          <strong style={{ flexShrink: 0, marginRight: "0.5rem" }}>Email:</strong>
-          <span className="ellipsis" style={{ maxWidth: "300px", display: "inline-block" }}>
-            <a href="mailto:closetohomeafh@outlook.com">closetohomeafh@outlook.com</a>
-          </span>
-        </p>
 
-        <p style={{ display: "flex", alignItems: "center" }}>
-          <strong style={{ flexShrink: 0, marginRight: "0.5rem" }}>Address:</strong>
-          <span className="ellipsis" style={{ maxWidth: "350px", display: "inline-block" }}>
-            <a
-              href="http://maps.google.com/?q=31904 42nd Ave SW, Federal Way, WA 98023"
-              title="31904 42nd Ave SW, Federal Way, WA 98023"
-            >
-              31904 42nd Ave SW, Federal Way, WA 98023
-            </a>
-          </span>
-        </p>
+       <p style={{ display: "flex", alignItems: "center", gap: "0.5rem", margin: "0.5rem 0" }}>
+  <i className="fas fa-envelope" style={{ color: "#4e6f2d", minWidth: "18px" }}></i>
+  <strong style={{ flexShrink: 0 }}>Email:</strong>
+  <span
+    className="ellipsis"
+    style={{
+      maxWidth: "300px",
+      display: "inline-block",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    }}
+  >
+    <a href="mailto:closetohomeafh@outlook.com">closetohomeafh@outlook.com</a>
+  </span>
+</p>
+
+
+       <p style={{ display: "flex", alignItems: "center", gap: "0.5rem", margin: "0.5rem 0" }}>
+  <i className="fas fa-map-marker-alt" style={{ color: "#4e6f2d", minWidth: "18px" }}></i>
+  <strong style={{ flexShrink: 0 }}>Address:</strong>
+  <span
+    className="ellipsis"
+    style={{ maxWidth: "350px", display: "inline-block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+  >
+    <a
+      href="http://maps.google.com/?q=31904 42nd Ave SW, Federal Way, WA 98023"
+      title="31904 42nd Ave SW, Federal Way, WA 98023"
+    >
+      31904 42nd Ave SW, Federal Way, WA 98023
+    </a>
+  </span>
+</p>
+
 
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2676.123456789012!2d-122.3456789012345!3d47.309876543210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54903abcdef12345%3A0xabcdef1234567890!2s31904%2042nd%20Ave%20SW%2C%20Federal%20Way%2C%20WA%2098023!5e0!3m2!1sen!2sus!4v1751583490611!5m2!1sen!2sus"
@@ -219,17 +246,56 @@ function App() {
         </div>
       </div>
 
-      {/* Floating Contact Button */}
-      <div id="contact-float">
-        <button id="contact-toggle" onClick={toggleContactMenu}>
-          {contactMenuOpen ? "✖" : "💬"}
-        </button>
-        <div id="contact-menu" className={contactMenuOpen ? "show" : ""}>
-          <a href="tel:+12532059208">📞 Call Us</a>
-          <a href="mailto:closetohomeafh@outlook.com">✉️ Email Us</a>
-          <button onClick={() => setActiveTab("contact Us")}>📝 Contact Form</button>
-        </div>
-      </div>
+     {/* Floating Contact Button */}
+<div id="contact-float">
+  <button
+    id="contact-toggle"
+    onClick={toggleContactMenu}
+  >
+    {contactMenuOpen ? "✖" : "💬"}
+  </button>
+
+  <div id="contact-menu" className={contactMenuOpen ? "show" : ""}>
+    <a
+      href="tel:+12532059208"
+      onClick={() => setContactMenuOpen(false)} // closes after click
+    >
+      <i className="fas fa-phone"></i> Call Us
+    </a>
+
+    <a
+      href="mailto:closetohomeafh@outlook.com"
+      onClick={() => setContactMenuOpen(false)} // closes after click
+    >
+      <i className="fas fa-envelope"></i> Email Us
+    </a>
+
+    <button
+      onClick={() => {
+        setActiveTab("contact Us"); // switch tab
+        setContactMenuOpen(false); // close floating menu
+        setTimeout(() => {
+          const contactSection = document.getElementById("contact Us");
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100); // wait for tab render before scroll
+      }}
+      style={{
+    alignItems: 'center',
+    gap: '6px',
+    margin: '5px 0',
+    border: 'none',
+    padding: '5px 10px',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontWeight: '500',
+      }}
+    >
+      <i className="fas fa-pencil-alt"></i> Contact Form
+    </button>
+  </div>
+</div>
 
       {/* Footer with Contact Section */}
       <footer>
