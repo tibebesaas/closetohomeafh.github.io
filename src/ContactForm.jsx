@@ -11,6 +11,7 @@ export default function Contact() {
       : { subject: "", name: "", email: "", phone: "", message: "" };
   });
 
+  const [errors, setErrors] = useState({ email: "", phone: "" });
   const [status, setStatus] = useState("");
 
   // Save to localStorage whenever formData changes
@@ -18,17 +19,73 @@ export default function Contact() {
     localStorage.setItem("contactForm", JSON.stringify(formData));
   }, [formData]);
 
-  // Handle input change
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+  // Validation function
+  const validateField = (name, value) => {
+    let error = "";
+
+    if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) error = "Please enter a valid email address.";
+    }
+
+    if (name === "phone") {
+      // US/Canada phone formats (optional +1)
+      const phoneRegex = /^(\+?1\s?)?(\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$/;
+      if (!phoneRegex.test(value)) {
+        error =
+          "Enter a valid US/Canada phone number (e.g., (253) 205-9208 or +1 (253) 205-9208).";
+      }
+    }
+
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
-  // Send email with emailjs
+  // Format US/Canada phone numbers with +1 auto-prepend
+  const formatPhoneNumber = (value) => {
+    let digits = value.replace(/\D/g, "");
+    let prefix = "";
+
+    // Auto-prepend +1 if number starts with 1 or +1
+    if (digits.startsWith("1") && digits.length === 11) {
+      prefix = "+1 ";
+      digits = digits.slice(1);
+    } else if (value.startsWith("+1")) {
+      prefix = "+1 ";
+      digits = digits.slice(1); // remove leading 1 for formatting
+    }
+
+    if (!digits) return "";
+
+    if (digits.length <= 3) return `${prefix}${digits}`;
+    if (digits.length <= 6) return `${prefix}(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `${prefix}(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+  };
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    let newValue = value;
+
+    if (name === "phone") {
+      newValue = formatPhoneNumber(value);
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
+
+    validateField(name, newValue);
+  };
+
+  // Send email with EmailJS
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (errors.email || errors.phone) {
+      setStatus("❌ Please fix the errors before sending.");
+      return;
+    }
 
     emailjs
       .send(
@@ -38,16 +95,14 @@ export default function Contact() {
         "uxxCPWDt4GOfE5R2P" // your public key
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("✅ Message sent successfully!");
+        () => {
+          setStatus(
+            "✅ Message sent successfully! Please check your spam folder if you don’t see the reply."
+          );
           setFormData({ subject: "", name: "", email: "", phone: "", message: "" });
-          localStorage.removeItem("contactForm"); // clear after success
+          localStorage.removeItem("contactForm");
         },
-        (error) => {
-          console.log(error.text);
-          setStatus("❌ Failed to send message. Please try again.");
-        }
+        () => setStatus("❌ Failed to send message. Please try again.")
       );
   };
 
@@ -102,17 +157,20 @@ export default function Contact() {
             required
           />
         </label>
+        {errors.email && <p className="error-text">{errors.email}</p>}
 
         <label>
           <i className="fas fa-phone"></i> Your Phone:
           <input
             type="tel"
             name="phone"
-            pattern="[0-9+\-\s()]*"
             value={formData.phone}
             onChange={handleChange}
+            required
+            placeholder="(253) 205-9208"
           />
         </label>
+        {errors.phone && <p className="error-text">{errors.phone}</p>}
 
         <label>
           <i className="fas fa-tag"></i> Subject:
@@ -144,13 +202,19 @@ export default function Contact() {
 
       {status && (
         <p
-          className={`status-message ${
-            status.startsWith("✅") ? "success" : "error"
-          }`}
+          className={`status-message ${status.startsWith("✅") ? "success" : "error"}`}
         >
           {status}
         </p>
       )}
+
+      <style jsx>{`
+        .error-text {
+          color: red;
+          font-size: 0.9rem;
+          margin: 0.25rem 0 1rem 1.5rem;
+        }
+      `}</style>
     </section>
   );
 }
