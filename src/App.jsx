@@ -153,18 +153,18 @@ function App() {
           {activeTab === "services" && (
             <div className="tab-content active">
               <h2>Our Services</h2>
-              <ul>
-                <li>✅ 24/7 Supervision & Care</li>
-                <li>💊 Medication Management</li>
-                <li>🍽️ Daily Meals & Housekeeping</li>
-                <li>🎨 Activities & Companionship</li>
-                <li>🛏️ Private & Shared Rooms</li>
-                <li>🧠 Dementia Care</li>
-                <li>⏳ Respite Care</li>
-                <li>🏠 Assisted Living</li>
-                <li>⚰️ Hospice Care</li>
-                <li>🩺 Diabetes and Stroke Care</li>
-                <li>📝 Nurse Assessment & Nurse Delegation</li>
+              <ul class="features">
+                <li><i class="fas fa-user-shield"></i> 24/7 Supervision & Care</li>
+                <li><i class="fas fa-pills"></i> Medication Management</li>
+                <li><i class="fas fa-utensils"></i> Daily Meals & Housekeeping</li>
+                <li><i class="fas fa-palette"></i> Activities & Companionship</li>
+                <li><i class="fas fa-bed"></i> Private & Shared Rooms</li>
+                <li><i class="fas fa-brain"></i> Dementia Care</li>
+                <li><i class="fas fa-hourglass-half"></i> Respite Care</li>
+                <li><i class="fas fa-home"></i> Assisted Living</li>
+                <li><i class="fas fa-procedures"></i> Hospice Care</li>
+                <li><i class="fas fa-notes-medical"></i> Diabetes and Stroke Care</li>
+                <li><i class="fas fa-clipboard-check"></i> Nurse Assessment & Nurse Delegation</li>
               </ul>
             </div>
           )}

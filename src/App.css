@@ -353,3 +353,21 @@ footer {
 .status-message.fade-out {
   opacity: 0;
 }
+
+.features {
+  list-style: none;      /* removes the dots */
+  padding: 0;            /* removes default left padding */
+  margin: 0;             /* optional: reset margin */
+}
+
+.features li {
+  margin: 0.5rem 0;      /* spacing between items */
+  display: flex;         /* align icon + text */
+  align-items: center;   /* vertical center */
+}
+
+.features i {
+  margin-right: 8px;     /* space between icon and text */
+  color: #2C2C2C;        /* match your site’s theme */
+  font-size: 1.2rem;     /* medium size */
+}
