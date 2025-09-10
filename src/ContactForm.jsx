@@ -3,9 +3,9 @@ import emailjs from "emailjs-com";
 import "./App.css";
 
 export default function Contact() {
-  // Load saved form data from localStorage if available
+  // Load saved form data from sessionStorage if available
   const [formData, setFormData] = useState(() => {
-    const saved = localStorage.getItem("contactForm");
+    const saved = sessionStorage.getItem("contactForm");
     return saved
       ? JSON.parse(saved)
       : { subject: "", name: "", email: "", phone: "", message: "" };
@@ -13,10 +13,11 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({ email: "", phone: "" });
   const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false); // new state for sending status
 
-  // Save to localStorage whenever formData changes
+  // Save to sessionStorage whenever formData changes
   useEffect(() => {
-    localStorage.setItem("contactForm", JSON.stringify(formData));
+    sessionStorage.setItem("contactForm", JSON.stringify(formData));
   }, [formData]);
 
   // Validation function
@@ -29,7 +30,6 @@ export default function Contact() {
     }
 
     if (name === "phone") {
-      // US/Canada phone formats (optional +1)
       const phoneRegex = /^(\+?1\s?)?(\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$/;
       if (!phoneRegex.test(value)) {
         error =
@@ -45,13 +45,12 @@ export default function Contact() {
     let digits = value.replace(/\D/g, "");
     let prefix = "";
 
-    // Auto-prepend +1 if number starts with 1 or +1
     if (digits.startsWith("1") && digits.length === 11) {
       prefix = "+1 ";
       digits = digits.slice(1);
     } else if (value.startsWith("+1")) {
       prefix = "+1 ";
-      digits = digits.slice(1); // remove leading 1 for formatting
+      digits = digits.slice(1);
     }
 
     if (!digits) return "";
@@ -87,6 +86,8 @@ export default function Contact() {
       return;
     }
 
+    setIsSending(true);
+
     emailjs
       .send(
         "service_iege6vw", // your EmailJS service ID
@@ -94,16 +95,15 @@ export default function Contact() {
         formData,
         "uxxCPWDt4GOfE5R2P" // your public key
       )
-      .then(
-        () => {
-          setStatus(
-            "✅ Message sent successfully! Please check your spam folder if you don’t see the reply."
-          );
-          setFormData({ subject: "", name: "", email: "", phone: "", message: "" });
-          localStorage.removeItem("contactForm");
-        },
-        () => setStatus("❌ Failed to send message. Please try again.")
-      );
+      .then(() => {
+        setStatus(
+          "✅ Message sent successfully! Please check your spam folder if you don’t see the reply."
+        );
+        setFormData({ subject: "", name: "", email: "", phone: "", message: "" });
+        sessionStorage.removeItem("contactForm");
+      })
+      .catch(() => setStatus("❌ Failed to send message. Please try again."))
+      .finally(() => setIsSending(false));
   };
 
   // Fade-out success/error message
@@ -195,8 +195,8 @@ export default function Contact() {
           ></textarea>
         </label>
 
-        <button type="submit">
-          <i className="fas fa-paper-plane"></i> Send
+        <button type="submit" disabled={isSending}>
+          <i className="fas fa-paper-plane"></i> {isSending ? "Sending..." : "Send"}
         </button>
       </form>
 
@@ -213,6 +213,10 @@ export default function Contact() {
           color: red;
           font-size: 0.9rem;
           margin: 0.25rem 0 1rem 1.5rem;
+        }
+        button[disabled] {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
       `}</style>
     </section>
