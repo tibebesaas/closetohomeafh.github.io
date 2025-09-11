@@ -137,48 +137,70 @@ function App() {
         <div className="tab-container">
           {activeTab === "about Us" && (
             <div className="tab-content active">
-              <h2>About Us</h2>
-              <p>
-                <strong>Close to Home Adult Family Home</strong> is owned and operated by a nurse with 7 years of experience in the health care field.
-              </p>
-              <p>
-                We are compassionate and provide quality care in our home. By delivering professional and exceptional care to our residents, we stand out with an above-and-beyond experienced team.
-              </p>
-              <p>
-                Our mission is to create <em>a safe, supportive, and enriching environment where every resident feels valued and respected</em>. We focus on individualized care plans, engaging activities, and emotional support to ensure the highest quality of life for those in our care.
-              </p>
+             <section class="about-us">
+  <h2><i class="fas fa-home"></i> About Us</h2>
+
+  <p>
+    <strong>Close to Home Adult Family Home</strong> is owned and operated by a nurse with 
+    <strong>7 years of healthcare experience</strong>. We provide compassionate, professional, 
+    and quality care in a warm, home-like environment.
+  </p>
+
+  <p>
+    Our team is dedicated to going <strong>above and beyond</strong> in caring for residents, 
+    ensuring dignity, comfort, and respect every day.
+  </p>
+
+  <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+  <ul class="about-list">
+    <li><i class="fas fa-shield-alt"></i> A safe and supportive home environment</li>
+    <li><i class="fas fa-heart"></i> Compassionate, personalized care</li>
+    <li><i class="fas fa-clipboard-list"></i> Individualized care plans</li>
+    <li><i class="fas fa-smile-beam"></i> Engaging activities and companionship</li>
+    <li><i class="fas fa-hands-helping"></i> Emotional and social support</li>
+  </ul>
+</section>
+
+
             </div>
           )}
 
           {activeTab === "services" && (
-            <div className="tab-content active">
-              <h2>Our Services</h2>
-              <ul class="features">
-                <li><i class="fas fa-user-shield"></i> 24/7 Supervision & Care</li>
-                <li><i class="fas fa-pills"></i> Medication Management</li>
-                <li><i class="fas fa-utensils"></i> Daily Meals & Housekeeping</li>
-                <li><i class="fas fa-palette"></i> Activities & Companionship</li>
-                <li><i class="fas fa-bed"></i> Private & Shared Rooms</li>
-                <li><i class="fas fa-brain"></i> Dementia Care</li>
-                <li><i class="fas fa-hourglass-half"></i> Respite Care</li>
-                <li><i class="fas fa-home"></i> Assisted Living</li>
-                <li><i class="fas fa-procedures"></i> Hospice Care</li>
-                <li><i class="fas fa-notes-medical"></i> Diabetes and Stroke Care</li>
-                <li><i class="fas fa-clipboard-check"></i> Nurse Assessment & Nurse Delegation</li>
-              </ul>
-            </div>
+           <div className="tab-content active">
+            <section class="about-us">
+            <h2><i class="fas fa-concierge-bell"></i> Our Services</h2>
+            <ul class="services-list">
+              <li><i class="fas fa-user-shield"></i><span>24/7 Supervision & Care</span></li>
+              <li><i class="fas fa-pills"></i><span>Medication Management</span></li>
+              <li><i class="fas fa-utensils"></i><span>Daily Meals & Housekeeping</span></li>
+              <li><i class="fas fa-palette"></i><span>Activities & Companionship</span></li>
+              <li><i class="fas fa-bed"></i><span>Private & Shared Rooms</span></li>
+              <li><i class="fas fa-brain"></i><span>Dementia Care</span></li>
+              <li><i class="fas fa-hourglass-half"></i><span>Respite Care</span></li>
+              <li><i class="fas fa-home"></i><span>Assisted Living</span></li>
+              <li><i class="fas fa-procedures"></i><span>Hospice Care</span></li>
+              <li><i class="fas fa-notes-medical"></i><span>Diabetes and Stroke Care</span></li>
+              <li><i class="fas fa-clipboard-check"></i><span>Nurse Assessment & Nurse Delegation</span></li>
+            </ul>
+            </section>
+          </div>
+
           )}
 
           {activeTab === "contact Us" && (
-            <div className="tab-content active">
-              <h2>Contact Us</h2>
-              <ContactForm /> {/* Subject field included */}
-            </div>
+           <div className="tab-content active">
+          <section class="about-us">
+  <h2><i className="fas fa-envelope"></i> Contact Us</h2>
+  <ContactForm /> {/* your form component with subject, name, email, phone, message */}
+</section>  
+</div>
+
           )}
 
           {activeTab === "gallery" && (
             <div className="tab-content active">
-              <h2>Gallery</h2>
+              <section class="about-us">
+               <h2><i className="fas fa-images"></i> Gallery</h2>
               <div
                 className="slideshow-container"
                 style={{ position: "relative", maxWidth: "800px", margin: "0 auto" }}
@@ -241,8 +263,10 @@ function App() {
                   &#10095;
                 </button>
               </div>
+              </section>
             </div>
           )}
+          
         </div>
       </div>
 

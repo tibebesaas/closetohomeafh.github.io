@@ -134,91 +134,86 @@ export default function Contact() {
   }, []);
 
   return (
-    <section id="contact" className="section-card">
-      <form onSubmit={sendEmail} className="contact-form">
-        <label>
-          <i className="fas fa-user"></i> Your Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+    <section id="contact" className="section-card"> 
+  <form onSubmit={sendEmail} className="contact-form">
+    {/* Name */}
+    <label className="form-label">
+      <span className="label-icon"><i className="fas fa-user"></i> Your Name:</span>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+    </label>
 
-        <label>
-          <i className="fas fa-envelope"></i> Your Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        {errors.email && <p className="error-text">{errors.email}</p>}
+    {/* Email */}
+    <label className="form-label">
+      <span className="label-icon"><i className="fas fa-envelope"></i> Your Email:</span>
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+    </label>
+    {errors.email && <p className="error-text">{errors.email}</p>}
 
-        <label>
-          <i className="fas fa-phone"></i> Your Phone:
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            placeholder="(253) 205-9208"
-          />
-        </label>
-        {errors.phone && <p className="error-text">{errors.phone}</p>}
+    {/* Phone */}
+    <label className="form-label">
+      <span className="label-icon"><i className="fas fa-phone"></i> Your Phone:</span>
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+        placeholder="(253) 205-9208"
+      />
+    </label>
+    {errors.phone && <p className="error-text">{errors.phone}</p>}
 
-        <label>
-          <i className="fas fa-tag"></i> Subject:
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-          />
-        </label>
+    {/* Subject */}
+    <label className="form-label">
+      <span className="label-icon"><i className="fas fa-tag"></i> Subject:</span>
+      <input
+        type="text"
+        name="subject"
+        value={formData.subject}
+        onChange={handleChange}
+        required
+      />
+    </label>
 
-        <label>
-          <i className="fas fa-comment-dots"></i> Your Message:
-          <textarea
-            name="message"
-            rows="5"
-            maxLength="1000"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </label>
+    {/* Message */}
+    <label className="form-label">
+      <span className="label-icon"><i className="fas fa-comment-dots"></i> Your Message:</span>
+      <textarea
+        name="message"
+        rows="5"
+        maxLength="1000"
+        value={formData.message}
+        onChange={handleChange}
+        required
+      ></textarea>
+    </label>
 
-        <button type="submit" disabled={isSending}>
-          <i className="fas fa-paper-plane"></i> {isSending ? "Sending..." : "Send"}
-        </button>
-      </form>
+    {/* Submit */}
+    <button type="submit" disabled={isSending}>
+      <i className="fas fa-paper-plane"></i> {isSending ? "Sending..." : "Send"}
+    </button>
+  </form>
 
-      {status && (
-        <p
-          className={`status-message ${status.startsWith("✅") ? "success" : "error"}`}
-        >
-          {status}
-        </p>
-      )}
+  {/* Status */}
+  {status && (
+    <p className={`status-message ${status.startsWith("✅") ? "success" : "error"}`}>
+      {status}
+    </p>
+  )}
 
-      <style jsx>{`
-        .error-text {
-          color: red;
-          font-size: 0.9rem;
-          margin: 0.25rem 0 1rem 1.5rem;
-        }
-        button[disabled] {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-      `}</style>
-    </section>
+</section>
+
   );
 }

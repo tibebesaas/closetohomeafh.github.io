@@ -374,4 +374,143 @@ footer {
   text-align: center;    /* center icon in its box */
   margin-right: 0.6rem;  /* space between icon and text */
 }
+.about-us {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  color: #2c2c2c;
+}
 
+.about-us h2,
+.about-us h3 {
+  color: #4e6f2d; /* theme green */
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-us p {
+  margin-bottom: 1rem;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.about-list i {
+  margin-right: 8px;   /* spacing between icon and text */
+  color: #4e6f2d;      /* theme green */
+  font-size: 1.2rem;   /* consistent size */
+  width: 24px; 
+  text-align: center;
+}
+
+.about-list span {
+  flex: 1;             /* keeps text aligned neatly */
+}
+/* === Tab content === */
+.tab-content {
+  display: none;
+  background-color: var(--primary-color);
+  color: #2C2C2C;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+/* Active tab */
+.tab-content.active {
+  display: block;
+}
+
+/* Tab heading with icon */
+.tab-content h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4e6f2d; /* highlight color for headings */
+  margin-bottom: 1rem;
+}
+
+/* Services list */
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.services-list li {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.services-list i {
+  margin-right: 8px;
+  color: #4e6f2d;
+  font-size: 1.2rem;
+  width: 24px; 
+  text-align: center;
+}
+
+.services-list span {
+  flex: 1; /* ensures text aligns neatly */
+}
+.form-label {
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      gap: 0.4rem;
+    }
+    .label-icon {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #4e6f2d;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #4e6f2d;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .error-text {
+      color: red;
+      font-size: 0.9rem;
+      margin: 0.25rem 0 1rem 1.5rem;
+    }
+    .contact-form button {
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #4e6f2d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+    }
+    .contact-form button:hover:not([disabled]) {
+      background-color: #557a19;
+    }
+    button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
