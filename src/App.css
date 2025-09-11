@@ -6,7 +6,7 @@
   --bg-light: #2C2C2C;
   --text-color: #2C2C2C;
   --link-color: #2C2C2C;
-  --link-hover: black;
+  --link-hover: #4e6f2d;
   --font-family: 'Quicksand', system-ui, sans-serif;
 }
 
@@ -357,17 +357,21 @@ footer {
 .features {
   list-style: none;      /* removes the dots */
   padding: 0;            /* removes default left padding */
-  margin: 0;             /* optional: reset margin */
+  margin: 0;             /* reset margin */
 }
 
 .features li {
   margin: 0.5rem 0;      /* spacing between items */
   display: flex;         /* align icon + text */
   align-items: center;   /* vertical center */
+  font-size: 1.05rem;    /* keep text consistent */
 }
 
 .features i {
-  margin-right: 8px;     /* space between icon and text */
   color: #2C2C2C;        /* match your site’s theme */
   font-size: 1.2rem;     /* medium size */
+  width: 24px;           /* 👈 ensures text alignment */
+  text-align: center;    /* center icon in its box */
+  margin-right: 0.6rem;  /* space between icon and text */
 }
+
