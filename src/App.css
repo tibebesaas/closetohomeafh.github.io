@@ -134,6 +134,7 @@ header:hover {
   cursor: pointer;
   font-weight: bold;
   transition: all 0.2s;
+  flex: 0 0 135px;    /* fixed width */
 }
 
 .tab.active,
