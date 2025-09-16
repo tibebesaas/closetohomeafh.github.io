@@ -14,8 +14,15 @@ function App() {
   const slides = [
     "/images/closetohome1.jpg",
     "/images/closetohome2.jpg",
+    "/images/closetohome2.1.jpg",
+    "/images/closetohome2.2.jpg",
     "/images/closetohome3.jpg",
     "/images/closetohome3.1.jpg",
+    "/images/closetohome3.2.jpg",
+    "/images/closetohome3.3.jpg",
+    "/images/closetohome3.4.jpg",
+    "/images/closetohome3.5.jpg",
+    "/images/closetohome3.6.jpg",
     "/images/closetohome4.jpg",
     "/images/closetohome5.jpg",
     "/images/closetohome6.jpg",
@@ -115,10 +122,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="header-text">
+        {/* <div className="header-text">
           <h1>Close to Home Adult Family Home</h1>
           <h4><i>Where Comfort Meets Compassion.</i></h4>
-        </div>
+        </div> */}
       </header>
 
       <div className="tab-wrapper">

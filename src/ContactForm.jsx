@@ -134,7 +134,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section id="contact" className="section-card"> 
+    <section id="contact" class="section-card"> 
   <form onSubmit={sendEmail} className="contact-form">
     {/* Name */}
     <label className="form-label">
