@@ -272,44 +272,26 @@ footer {
   color: #2C2C2C;
 }
 /* Contact Form Styling */
+/* General card/container width */
+.section-card,
+.contact-form,
 #contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* spacing between fields */
-  max-width: 500px;
-  margin: 0 auto; /* center the form */
+  max-width: 800px;   /* same width as .about-us or tab content */
+  margin: 2rem auto;  /* center and spacing */
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-#contact-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-  color: #2C2C2C;
-}
-
+/* Keep existing input/button styles */
+.contact-form input,
+.contact-form textarea,
 #contact-form input,
 #contact-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  margin-top: 6px;
+  width: 100%;
 }
 
-#contact-form button {
-  background-color: #2C2C2C;
-  color: #9CAF88;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#contact-form button:hover {
-  background-color: #9CAF88;
-}
 /* Slideshow base */
 .slideshow-container {
   position: relative;
